@@ -1,0 +1,620 @@
+<%- include('../partials/header') %>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Dashboard</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div class="row">
+
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Sales <span>| This Year</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-cart"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>
+                                                <%=totalSalesNext.toLocaleString("en-US")%> $
+                                            </h6>
+                                            <span class="text-secondary small pt-1 fw-bold">
+                                                <%=Math.abs(salesDif).toLocaleString("en-US")%> $
+                                            </span>
+                                            <% if(salesDif>0){%>
+                                                <span class="text-success small pt-2 ps-1">increase from last year
+                                                </span>
+                                                <%}else{%>
+                                                    <span class="text-danger small pt-2 ps-1">decrease from last
+                                                        year</span>
+                                                    <%} %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card revenue-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Revenue <span>| This Year</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-currency-dollar"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>
+                                                <%=totalProfitNext.toLocaleString("en-US")%> $
+                                            </h6>
+                                            <span class="text-secondary small pt-1 fw-bold">
+                                                <%=Math.abs(profitDif).toLocaleString("en-US")%> $
+                                            </span>
+                                            <% if(profitDif>0){%>
+                                                <span class="text-success small pt-2 ps-1">increase from last year
+                                                </span>
+                                                <%}else{%>
+                                                    <span class="text-danger small pt-2 ps-1">decrease from last
+                                                        year</span>
+                                                    <%} %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-xl-12">
+                            <div class="card info-card costs-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Costs <span>| This Year</span></h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-people"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>
+                                                <%=totalCostsNext.toLocaleString("en-US")%> $
+                                            </h6>
+                                            <span class="text-secondary small pt-1 fw-bold">
+                                                <%=Math.abs(costsDif).toLocaleString("en-US")%> $
+                                            </span>
+                                            <% if(costsDif>0){%>
+                                                <span class="text-success small pt-2 ps-1">increase from last year
+                                                </span>
+                                                <%}else{%>
+                                                    <span class="text-danger small pt-2 ps-1">decrease from last
+                                                        year</span>
+                                                    <%} %>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Reports <span>| This Year</span></h5>
+
+                                    <div id="reportsChart"></div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card recent-sales overflow-auto">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Recent Sales <span>| This Year</span></h5>
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    #
+                                                </th>
+                                                <th scope="col">
+                                                    Segment
+                                                </th>
+                                                <th scope="col">
+                                                    Country
+                                                </th>
+                                                <th scope="col">
+                                                    Product
+                                                </th>
+                                                <th scope="col">
+                                                    Gross Sales (in $)
+                                                </th>
+                                                <th scope="col">
+                                                    Costs of Sales (in $)
+                                                </th>
+                                                <th scope="col">
+                                                    Date
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <%if(RS===false){%>
+                                            <%}else{%>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[0]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[0]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[0]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[0].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[0].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[0]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">2</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[1]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[1]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[1]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[1].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[1].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[1]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">3</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[2]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[2]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[2]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[2].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[2].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[2]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">4</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[3]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[3]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[3]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[3].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[3].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[3]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">5</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[4]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[4]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[4]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[4].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[4].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[4]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">6</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[5]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[5]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[5]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[5].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[5].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[5]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">7</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[6]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[6]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[6]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[6].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[6].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[6]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">8</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[7]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[7]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[7]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[7].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[7].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[7]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">9</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[8]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[8]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[8]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[8].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[8].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[8]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    <tr>
+                                                        <th scope="row">10</th>
+                                                        <td>
+                                                            <%=RS.RSsegment[9]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScountry[9]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSproduct[9]%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RSgrossSales[9].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%=RS.RScosts[9].toLocaleString("en-US")%>
+                                                        </td>
+                                                        <td>
+                                                            <%= moment(RS.RSdate[9]).format( 'MM/DD/YYYY' ) %>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <%}%>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+
+                    <div class="col-12">
+                        <div class="card top-selling overflow-auto">
+
+                            <div class="card-body pb-0">
+                                <h5 class="card-title">Top Selling <span>| This Year</span></h5>
+
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th>
+                                                Product
+                                            </th>
+                                            <th>
+                                                Units Sold
+                                            </th>
+                                            <th>
+                                                Profit
+                                            </th>
+                                            <th>
+                                                Mfg. Price
+                                            </th>
+                                            <th>
+                                                Sale Price
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <%if(TS===false){%>
+                                        <%}else{%>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">1</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[0]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[0].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[0].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[0]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[0]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[1]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[1].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[1].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[1]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[1]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">3</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[2]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[2].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[2].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[2]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[2]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[3]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[3].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[3].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[3]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[3]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[4]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[4].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[4].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[4]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[4]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">6</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[5]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[5].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[5].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[5]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[5]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">7</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[6]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[6].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[6].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[6]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[6]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">8</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[7]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[7].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[7].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[7]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[7]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">9</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[8]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[8].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[8].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[8]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[8]%>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">10</th>
+                                                    <td>
+                                                        <%=TS.TSproduct[9]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSunitsSold[9].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSprofit[9].toLocaleString("en-US")%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSmanufacturingPrice[9]%>
+                                                    </td>
+                                                    <td>
+                                                        <%=TS.TSsalePrice[9]%>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <%}%>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card">
+
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Segment Diversity <span>| This Year</span></h5>
+
+                            <div id="pieChart"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>

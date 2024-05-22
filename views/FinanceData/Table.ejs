@@ -1,0 +1,110 @@
+<%- include('../partials/header') %>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Table View</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Table View</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div>
+                                <h5 class="card-title">Data View</h5>
+                            </div>
+
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Segment</th>
+                                        <th scope="col">Country</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Discount Band</th>
+                                        <th scope="col">Units Sold</th>
+                                        <th scope="col">Manufacturing Price</th>
+                                        <th scope="col">Sale Price</th>
+                                        <th scope="col">Gross Sales</th>
+                                        <th scope="col">Discount</th>
+                                        <th scope="col">Sales</th>
+                                        <th scope="col">Cost of Sales</th>
+                                        <th scope="col">Revenue</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Changes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%financeData.forEach(fData=> {%>
+                                        <tr>
+                                            <td style="width: 6vw;">
+                                                <%= fData.segment %>
+                                            </td>
+                                            <td style="width: 6vw;">
+                                                <%= fData.country %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= fData.product %>
+                                            </td>
+                                            <td style="width: 8vw;">
+                                                <%= fData.discountBand %>
+                                            </td>
+                                            <td style="width: 6vw;">
+                                                <%= fData.unitsSold %>
+                                            </td>
+                                            <td style="width: 12vw;">
+                                                <%= fData.manufacturingPrice %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= fData.salePrice %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= fData.grossSales %>
+                                            </td>
+                                            <td style="width: 6vw;">
+                                                <%= fData.discounts %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= fData.sales %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= fData.costsOfSales %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= fData.profit %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <%= moment(fData.date).format( 'MM/DD/YYYY' ) %>
+                                            </td>
+                                            <td style="width: 7vw;">
+                                                <form action="/Edit" method="post">
+                                                    <button class="btn btn-primary mx-1" type="submit" name="editItem"
+                                                        value="<%=fData._id %>">Edit</button>
+                                                </form>
+                                                <form action="/Delete" method="post">
+                                                    <button class="btn btn-danger mx-1" type="submit" name="deleteItem"
+                                                        value="<%=fData._id %>">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        <%});%>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>

@@ -1,0 +1,67 @@
+<%- include('../partials/header') %>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Chart View</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Chart View</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section">
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Revenue vs Costs</h5>
+
+                            <div id="columnChart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Gross Sales</h5>
+
+                            <div id="lineChart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Country Diversity</h5>
+
+                            <div id="donutChart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Units Sold Per Country</h5>
+
+                            <div id="barChart"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>

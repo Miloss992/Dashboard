@@ -1,0 +1,127 @@
+<%- include('../partials/header') %>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Entry Form</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Entry Form</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Entry Form</h5>
+
+                            <form name="Create" action="/Create" method="post">
+                                <div class="row mb-3">
+                                    <label for="segment" class="col-sm-2 col-form-label">Segment</label>
+                                    <div class="col-sm-10">
+                                        <select name="segment" class="form-control" required>
+                                            <option value="Segment1">Segment1</option>
+                                            <option value="Segment2">Segment2</option>
+                                            <option value="Segment3">Segment3</option>
+                                            <option value="Segment4">Segment4</option>
+                                            <option value="Segment5">Segment5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="country" class="col-sm-2 col-form-label">Country</label>
+                                    <div class="col-sm-10">
+                                        <select name="country" class="form-control" required>
+                                            <option value="Country1">Country1</option>
+                                            <option value="Country2">Country2</option>
+                                            <option value="Country3">Country3</option>
+                                            <option value="Country4">Country4</option>
+                                            <option value="Country5">Country5</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="product" class="col-sm-2 col-form-label">Product</label>
+                                    <div class="col-sm-10">
+                                        <select name="product" class="form-control" required>
+                                            <option value="Product1">Product1</option>
+                                            <option value="Product2">Product2</option>
+                                            <option value="Product3">Product3</option>
+                                            <option value="Product4">Product4</option>
+                                            <option value="Product5">Product5</option>
+                                            <option value="Product6">Product6</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="discountBand" class="col-sm-2 col-form-label">Discount Band</label>
+                                    <div class="col-sm-10">
+                                        <select name="discountBand" class="form-control" required>
+                                            <option value="High (10%)">High (10%)</option>
+                                            <option value="Medium (5%)">Medium (5%)</option>
+                                            <option value="Low (2%)">Low (2%)</option>
+                                            <option value="None (0%)">None (0%)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="unitsSold" class="col-sm-2 col-form-label">Units Sold</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="unitsSold" class="form-control" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="manufacturingPrice" class="col-sm-2 col-form-label">Manufacturing
+                                        Price</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="manufacturingPrice" class="form-control"
+                                            required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="uCostsOfSales" class="col-sm-2 col-form-label">Cost of Sales (Additional
+                                        Expenses)</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="uCostsOfSales" class="form-control" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="date" class="form-control" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <button type="submit" value="Create" class="btn btn-primary">Submit
+                                            Form</button>
+                                        <a href="/" type="submit" class="btn btn-danger">Back to List</a>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>

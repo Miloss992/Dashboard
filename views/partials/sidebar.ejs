@@ -1,0 +1,95 @@
+<% if(login==true){ %>
+    <ul class="navbar-nav">
+
+        <aside id="sidebar" class="sidebar">
+
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="Dashboard">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="Create">
+                        <i class="bi bi-person"></i>
+                        <span>Entry Form</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="Table">
+                        <i class="bi bi-person"></i>
+                        <span>Table View</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="Chart">
+                        <i class="bi bi-person"></i>
+                        <span>Chart View</span>
+                    </a>
+                </li>
+
+                <li class="nav-heading">Pages</li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="Index">
+                        <i class="bi bi-person"></i>
+                        <% if(user=='' ){ %>
+                            <% } else{ %>
+                                <span>Hello <%=user%></span>
+                                <% } %>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="Contact">
+                        <i class="bi bi-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <form action="/Logout" method="post" id="logout">
+                        <a class="nav-link collapsed" href=# onclick="document.getElementById('logout').submit()">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>Logout</span>
+                        </a>
+                    </form>
+                </li>
+
+            </ul>
+
+        </aside>
+
+    </ul>
+    <% } else{ %>
+        <ul class="navbar-nav">
+
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="Contact">
+                            <i class="bi bi-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="Login">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </aside>
+
+        </ul>
+        <% } %>

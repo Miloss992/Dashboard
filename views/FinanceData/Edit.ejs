@@ -1,0 +1,182 @@
+<%- include('../partials/header') %>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Entry Form</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Entry Form</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Entry Form</h5>
+
+                            <form name="Edit" action="/Edit!" method="post">
+                                <div class="row mb-3">
+                                    <label for="segment" class="col-sm-2 col-form-label">Segment</label>
+                                    <div class="col-sm-10">
+                                        <select name="segment" class="form-control" required>
+                                            <%var options=[ "Segment1" , "Segment2" , "Segment3" , "Segment4"
+                                                , "Segment5" ]; %>
+                                                <%options.forEach(element=> { %>
+                                                    <% if(fData.segment==element){ %>
+                                                        <option value="<%= element %>" selected>
+                                                            <%= element %>
+                                                        </option>
+                                                        <% } else { %>
+                                                            <option value="<%= element %>">
+                                                                <%= element %>
+                                                            </option>
+                                                            <%}}); %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="country" class="col-sm-2 col-form-label">Country</label>
+                                    <div class="col-sm-10">
+                                        <select name="country" class="form-control" required>
+                                            <%var options=[ "Country1" , "Country2" , "Country3" , "Country4"
+                                                , "Country5" ]; %>
+                                                <%options.forEach(element=> { %>
+                                                    <% if(fData.country==element){ %>
+                                                        <option value="<%= element %>" selected>
+                                                            <%= element %>
+                                                        </option>
+                                                        <% } else { %>
+                                                            <option value="<%= element %>">
+                                                                <%= element %>
+                                                            </option>
+                                                            <%}}); %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="product" class="col-sm-2 col-form-label">Product</label>
+                                    <div class="col-sm-10">
+                                        <select name="product" class="form-control" required>
+                                            <%var options=[ "Product1" , "Product2" , "Product3" , "Product4"
+                                                , "Product5" , "Product6" ]; %>
+                                                <%options.forEach(element=> { %>
+                                                    <% if(fData.product==element){ %>
+                                                        <option value="<%= element %>" selected>
+                                                            <%= element %>
+                                                        </option>
+                                                        <% } else { %>
+                                                            <option value="<%= element %>">
+                                                                <%= element %>
+                                                            </option>
+                                                            <%}}); %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="discountBand" class="col-sm-2 col-form-label">Discount Band</label>
+                                    <div class="col-sm-10">
+                                        <select name="discountBand" class="form-control" required>
+                                            <%var options=[ "High (10%)" , "Medium (5%)" , "Low (2%)" , "None (0%)" ];
+                                                %>
+                                                <%options.forEach(element=> { %>
+                                                    <% if(fData.discountBand==element){ %>
+                                                        <option value="<%= element %>" selected>
+                                                            <%= element %>
+                                                        </option>
+                                                        <% } else { %>
+                                                            <option value="<%= element %>">
+                                                                <%= element %>
+                                                            </option>
+                                                            <%}}); %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="unitsSold" class="col-sm-2 col-form-label">Units Sold</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="unitsSold" class="form-control"
+                                            value="<%= fData.unitsSold %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="manufacturingPrice" class="col-sm-2 col-form-label">Manufacturing
+                                        Price</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="manufacturingPrice" class="form-control"
+                                            value="<%= fData.manufacturingPrice %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="salePrice" class="col-sm-2 col-form-label">Sale Price</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="salePrice" class="form-control"
+                                            value="<%= fData.salePrice %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="discounts" class="col-sm-2 col-form-label">Discount</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="discounts" class="form-control"
+                                            value="<%= fData.discounts %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="uCostsOfSales" class="col-sm-2 col-form-label">Cost of Sales (Additional
+                                        Expenses)</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="uCostsOfSales" class="form-control"
+                                            value="<%= fData.uCostsOfSales %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="profit" class="col-sm-2 col-form-label">Profit</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" name="profit" class="form-control"
+                                            value="<%= fData.profit %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                                    <div class="col-sm-10">
+                                        <input type="date" name="date" class="form-control"
+                                            value="<%= moment(fData.date).format( 'YYYY-MM-DD' ) %>" required></input>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <button class="btn btn-primary mx-1" type="submit" name="edit"
+                                            value="<%=fData._id %>">Submit Form</button>
+                                        <a href="/Table" type="submit" class="btn btn-danger">Back to List</a>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>

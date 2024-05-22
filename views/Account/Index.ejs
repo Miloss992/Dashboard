@@ -1,0 +1,197 @@
+<%- include('../partials/header') %>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Profile</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Home</li>
+                    <li class="breadcrumb-item active">Profile</li>
+                </ol>
+            </nav>
+        </div>
+
+        <section class="section profile">
+            <div class="row">
+                <div class="col-xl-4">
+
+                </div>
+
+                <div class="col-xl-12">
+
+                    <div class="card">
+                        <div class="card-body pt-3">
+                            <ul class="nav nav-tabs nav-tabs-bordered">
+
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab"
+                                        data-bs-target="#profile-overview">Profile</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab"
+                                        data-bs-target="#profile-email">Email</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab"
+                                        data-bs-target="#profile-password">Password</button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab"
+                                        data-bs-target="#profile-personal-data">Personal Data</button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content pt-2">
+
+                                <% if(message !='' ){ %>
+                                    <div class="alert alert-danger" role="alert">
+                                        <%=message%>
+                                    </div>
+                                    <% } %>
+
+                                        <div class="tab-pane fade show active pt-3" id="profile-overview">
+                                            <form action="/Index-profile" method="post">
+
+                                                <div class="row mb-3">
+                                                    <label for="username"
+                                                        class="col-md-4 col-lg-3 col-form-label">Username</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="username" type="username" class="form-control"
+                                                            id="username" value="<%=user%>" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="phoneNumber"
+                                                        class="col-md-4 col-lg-3 col-form-label">Phone
+                                                        Number</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <%if(typeof(phone) !="undefined" ){%>
+                                                            <input name="phoneNumber" type="phoneNumber"
+                                                                class="form-control" id="phoneNumber"
+                                                                value="<%=phone%>">
+                                                            <%}else{%>
+                                                                <input name="phoneNumber" type="phoneNumber"
+                                                                    class="form-control" id="phoneNumber">
+                                                                <%}%>
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                        <div class="tab-pane fade pt-3" id="profile-email">
+                                            <form action="/Index-email" method="post">
+
+                                                <div class="row mb-3">
+                                                    <label for="email"
+                                                        class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="email" type="email" class="form-control" id="email"
+                                                            value="<%=user%>" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="newEmail" class="col-md-4 col-lg-3 col-form-label">New
+                                                        Email</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="newEmail" type="newEmail" class="form-control"
+                                                            id="newEmail">
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                        <div class="tab-pane fade pt-3" id="profile-password">
+                                            <form action="/Index-password" method="post">
+
+                                                <div class="row mb-3">
+                                                    <label for="email"
+                                                        class="col-md-4 col-lg-3 col-form-label">Email</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="email" type="email" class="form-control" id="email"
+                                                            value="<%=user%>" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="newPassword"
+                                                        class="col-md-4 col-lg-3 col-form-label">New
+                                                        Password</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="newPassword" type="newPassword"
+                                                            class="form-control" id="newPassword"
+                                                            style="-webkit-text-security: disc">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="confirmPassword"
+                                                        class="col-md-4 col-lg-3 col-form-label">Confirm
+                                                        Password</label>
+                                                    <div class="col-md-8 col-lg-9">
+                                                        <input name="confirmPassword" type="confirmPassword"
+                                                            class="form-control" id="confirmPassword"
+                                                            style="-webkit-text-security: disc">
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn btn-primary">Change
+                                                        Password</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                        <div class="tab-pane fade pt-3" id="profile-personal-data">
+                                            <form action="/Index-delete" method="post">
+
+                                                <h3>Personal Data</h3>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p>Your account contains personal data that you have given us.
+                                                            This page
+                                                            allows you to delete that data.</p>
+                                                        <p>
+                                                            <strong>Deleting this data will permanently remove your
+                                                                account, and
+                                                                this cannot be recovered.</strong>
+                                                        </p>
+                                                        <input name="username" type="hidden" value="<%=user%>" readonly>
+                                                        <button type="submit" id="reset-authenticator"
+                                                            class="btn btn-danger" href="#">Delete</button>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %>
